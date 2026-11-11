@@ -1,0 +1,46 @@
+Pananakop Map Editor
+====================
+
+Run run_map_editor.bat from the project folder, or open
+src/GameEditor/GameEditor.java in VS Code and run its main method. The editor
+loads res/lvls/1.png on startup.
+
+Run run_game.bat to compile and show the game window.
+
+Stages:
+- Use the stage selector to edit numbered stages 1 through 5. Stage 1 is the
+  tutorial; Stage 5 is reserved for the boss fight.
+- Stages 1–4 load their existing numbered maps. If Stage 5 does not exist yet,
+  selecting it creates a flat, editable arena with a player start and a
+  temporary Crabby placeholder. Replace the placeholder when boss content is
+  ready, then save Stage 5 as 5.png.
+- Save numbered stages in res/lvls as 1.png through 5.png so the game can load
+  them in order. The boss fight is currently an arena placeholder; boss-specific
+  behavior and assets have not been added.
+
+Blocks tab:
+- Choose Classic tiles or a modern block material from the list.
+- Select a tile, then click or drag on the map to paint it.
+- Right-click or right-drag any map cell to erase its tile and all placed
+  objects or markers in that cell.
+- Modern block tiles are saved in a matching .tiles sidecar file and render
+  when the game loads that numbered level.
+- Click Test map to play the current editor contents, including unsaved edits.
+  The test runs in a separate game window; close it to return to the editor.
+  Use A/D to move, Space to jump, Shift to run, left-click to attack, and
+  right-click to block.
+
+Mobs & objects tab:
+- Place one player start, Crabby mobs, potions, barrels, crates, spikes, and
+  left- or right-facing cannons.
+- Place animated traps from the supplied trap sprite strips. Traps animate
+  automatically and damage the player on contact; the bamboo bounce pad
+  launches the player upward. Trap placements are stored in the PNG's blue
+  channel, so they work in existing map files without an extra sidecar.
+- Use Erase cell to select the eraser tool; right-click also erases cells
+  without changing the selected placement tool.
+
+Use New map to create a level at least 26 tiles wide. Levels are 14 tiles high,
+matching the current game viewport. Save numbered maps in res/lvls with
+consecutive names (1.png, 2.png, 3.png, ...), as required by the game loader.
+The PNG retains the game's existing terrain and entity encoding.
